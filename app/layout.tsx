@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
-import ThemeProvider from '@/app/provider/ThemeProvider'
-import TemplateWithNavbar from '@/app/components/Navbar'
+import ThemeProvider from 'provider/ThemeProvider'
+import TemplateWithNavbar from 'components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 

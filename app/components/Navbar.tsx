@@ -13,6 +13,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import InboxIcon from '@mui/icons-material/MoveToInbox'
 import MailIcon from '@mui/icons-material/Mail'
+import Link from 'next/link'
 
 const drawerWidth = 240
 
@@ -22,7 +23,7 @@ export default function ClippedDrawer({
   children: React.ReactNode
 }) {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: '100%' }}>
       <CssBaseline />
       <AppBar position="fixed">
         <Toolbar>
@@ -45,14 +46,16 @@ export default function ClippedDrawer({
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
+            {['Home', 'Posts', 'Charts', 'Drafts'].map((text, index) => (
+              <ListItem key={text} disablePadding sx={{ a: { width: '100%' } }}>
+                <Link href={text === 'Home' ? '/' : `/${text.toLowerCase()}/`}>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </Link>
               </ListItem>
             ))}
           </List>
@@ -71,9 +74,12 @@ export default function ClippedDrawer({
           </List>
         </Box>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 3, display: 'flex', flexDirection: 'column' }}
+      >
         <Toolbar />
-        {children}
+        <Box sx={{ flexGrow: 1 }}>{children}</Box>
       </Box>
     </Box>
   )
