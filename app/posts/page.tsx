@@ -6,7 +6,7 @@ export const metadata = {
   title: 'This is Page'
 }
 
-export default function posts() {
+export default function Posts() {
   const [vendorName, setVendorName] = React.useState<string[]>([])
   const vendorOptions = ['a', 'b']
   const onReset = () => {

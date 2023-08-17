@@ -16,5 +16,5 @@ export async function POST(req: Request) {
     const inputData: { title: string } = await req.json()
     const newId = Math.max(...todos.map(item => item.id)) + 1
     todos.push({ id: newId, ...inputData })
-    return NextResponse.json(todos)
+    return NextResponse.json("Update Succeed")
 }

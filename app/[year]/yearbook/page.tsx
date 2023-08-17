@@ -13,8 +13,8 @@ export function generateMetadata(
     title: `${params.year} yearbook`
   }
 }
-const yearbook = ({ params }: { params: { year: string } }) => {
+const Yearbook = ({ params }: { params: { year: string } }) => {
   return <div>{params.year} yearbook</div>
 }
 
-export default yearbook
+export default Yearbook

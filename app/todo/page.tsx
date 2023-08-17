@@ -6,7 +6,7 @@ import { todoUpdater } from 'utils/swrFuncs'
 import { TodoType } from 'types/todo'
 import { Box, Button, TextField } from '@mui/material'
 
-const todo = () => {
+const Todo = () => {
   const { data, error } = useSWR<TodoType[]>('/api/todo')
 
   return (
@@ -19,9 +19,9 @@ const todo = () => {
 }
 
 const TodoInput = () => {
-  const { trigger } = useSWRMutation('/api/todo', todoUpdater)
+  const { trigger, isMutating } = useSWRMutation('/api/todo', todoUpdater)
   const [newTodo, setNewTodo] = useState('')
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewTodo(e.target.value)
   }
   const submitTodo = async () => {
@@ -35,10 +35,12 @@ const TodoInput = () => {
 
   return (
     <Box sx={{ display: 'flex', gap: 2 }}>
-      <TextField id="new-todo" onChange={handleChange} />
-      <Button onClick={submitTodo}>Submit</Button>
+      <TextField id="new-todo" value={newTodo} onChange={handleChange} />
+      <Button disabled={isMutating} onClick={submitTodo}>
+        Submit
+      </Button>
     </Box>
   )
 }
 
-export default todo
+export default Todo
