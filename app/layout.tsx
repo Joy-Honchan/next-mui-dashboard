@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import ThemeProvider from 'provider/ThemeProvider'
+import SwrProvider from 'provider/SwrProvider'
 import TemplateWithNavbar from 'components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,7 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
-          <TemplateWithNavbar>{children}</TemplateWithNavbar>
+          <SwrProvider>
+            <TemplateWithNavbar>{children}</TemplateWithNavbar>
+          </SwrProvider>
         </ThemeProvider>
       </body>
     </html>

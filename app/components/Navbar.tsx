@@ -46,7 +46,7 @@ export default function ClippedDrawer({
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['Home', 'Posts', 'Charts', 'Drafts'].map((text, index) => (
+            {['Home', 'Posts', 'Charts', 'Todo'].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ a: { width: '100%' } }}>
                 <Link href={text === 'Home' ? '/' : `/${text.toLowerCase()}/`}>
                   <ListItemButton>
