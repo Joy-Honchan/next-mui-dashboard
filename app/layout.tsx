@@ -7,6 +7,8 @@ import ThemeProvider from 'provider/ThemeProvider'
 import SwrProvider from 'provider/SwrProvider'
 import TemplateWithNavbar from 'components/Navbar'
 
+import 'config/axios'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
