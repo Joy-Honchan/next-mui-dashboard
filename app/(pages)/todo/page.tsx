@@ -21,21 +21,27 @@ const Todo = () => {
 const TodoInput = () => {
   const { trigger, isMutating } = useSWRMutation('/api/todo', todoUpdater)
   const [newTodo, setNewTodo] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewTodo(e.target.value)
   }
   const submitTodo = async () => {
-    try {
-      await trigger({ title: newTodo })
-      setNewTodo('')
-    } catch (e) {
-      console.log(e)
+    const res = await trigger({ title: newTodo })
+    if (res.data.error) {
+      setErrorMsg(res.data.error)
     }
+    setNewTodo('')
   }
 
   return (
     <Box sx={{ display: 'flex', gap: 2 }}>
-      <TextField id="new-todo" value={newTodo} onChange={handleChange} />
+      <TextField
+        id="new-todo"
+        value={newTodo}
+        onChange={handleChange}
+        error={!!errorMsg}
+        helperText={errorMsg}
+      />
       <Button disabled={isMutating} onClick={submitTodo}>
         Submit
       </Button>

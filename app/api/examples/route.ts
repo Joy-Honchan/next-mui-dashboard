@@ -39,6 +39,7 @@ const DATA: DataType = {
 }
 
 export async function GET(req: NextApiRequest) {
+    console.log(req);
     return NextResponse.json(DATA)
 }
 
