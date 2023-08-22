@@ -1,10 +1,12 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import useSWR from 'swr'
 import useSWRMutation from 'swr/mutation'
 import { todoUpdater } from 'utils/swrFuncs'
 import { TodoType } from 'types/todo'
-import { Box, Button, TextField } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 
 const Todo = () => {
   const { data, error } = useSWR<TodoType[]>('/api/todo')

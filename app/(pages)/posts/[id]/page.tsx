@@ -1,7 +1,7 @@
-'use client'
-import React from 'react'
-import { useParams } from 'next/navigation'
-import { ResolvingMetadata, Metadata } from 'next'
+// 'use client'
+// import React from 'react'
+// import { useParams } from 'next/navigation'
+// import { ResolvingMetadata, Metadata } from 'next'
 
 // type Props = {
 //   params: { id: string }

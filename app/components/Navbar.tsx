@@ -32,7 +32,7 @@ export default function ClippedDrawer({
           <Typography variant="h6" noWrap component="div">
             Clipped drawer
           </Typography>
-          <Link href={'/signout'}>
+          <Link href={'/signout'} prefetch={false}>
             <Button color="inherit" startIcon={<LogoutIcon />}>
               Sign Out
             </Button>
@@ -55,7 +55,10 @@ export default function ClippedDrawer({
           <List>
             {['Home', 'Posts', 'Charts', 'Todo'].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ a: { width: '100%' } }}>
-                <Link href={text === 'Home' ? '/' : `/${text.toLowerCase()}/`}>
+                <Link
+                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}/`}
+                  prefetch={false}
+                >
                   <ListItemButton>
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

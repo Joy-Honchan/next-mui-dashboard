@@ -1,13 +1,15 @@
 'use client'
-import React from 'react'
-import { Autocomplete, TextField, Button, Chip } from '@mui/material'
+import { useState } from 'react'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 export const metadata = {
   title: 'This is Page'
 }
 
 export default function Posts() {
-  const [vendorName, setVendorName] = React.useState<string[]>([])
+  const [vendorName, setVendorName] = useState<string[]>([])
   const vendorOptions = ['a', 'b']
   const onReset = () => {
     setVendorName([])
