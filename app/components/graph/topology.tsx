@@ -1,7 +1,8 @@
 'use client'
 import React, { useEffect } from 'react'
-
+import useSWR from 'swr'
 import Grahpin, { Behaviors } from '@antv/graphin'
+import { DataType } from 'types/example'
 
 interface NodeType {
   id: string
@@ -20,27 +21,40 @@ const walk = (node: NodeType, callback: (node: NodeType) => void) => {
   }
 }
 const CompactBox = () => {
-  const [state, setState] = React.useState({
+  const { data: exampleData } = useSWR<DataType>('/api/examples')
+  const [state, setState] = React.useState<{ data: DataType | null }>({
     data: null
   })
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    fetch('http://localhost:3000/api/examples')
-      .then((res) => res.json())
-      .then((res) => {
-        // console.log('data', res)
-        walk(res, (node) => {
-          node.style = {
-            label: {
-              value: node.id
-            }
+    if (exampleData) {
+      walk(exampleData, (node) => {
+        node.style = {
+          label: {
+            value: node.id
           }
-        })
-        setState({
-          data: res
-        })
+        }
       })
-  }, [])
+      setState({
+        data: exampleData
+      })
+    }
+
+    // fetch('http://localhost:3000/api/examples')
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     // console.log('data', res)
+    //     walk(res, (node) => {
+    //       node.style = {
+    //         label: {
+    //           value: node.id
+    //         }
+    //       }
+    //     })
+    //     setState({
+    //       data: res
+    //     })
+    //   })
+  }, [exampleData])
 
   const { data } = state
 

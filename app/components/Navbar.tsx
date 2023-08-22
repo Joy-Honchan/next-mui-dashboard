@@ -14,6 +14,8 @@ import ListItemText from '@mui/material/ListItemText'
 import InboxIcon from '@mui/icons-material/MoveToInbox'
 import MailIcon from '@mui/icons-material/Mail'
 import Link from 'next/link'
+import { Button } from '@mui/material'
+import LogoutIcon from '@mui/icons-material/Logout'
 
 const drawerWidth = 240
 
@@ -26,10 +28,15 @@ export default function ClippedDrawer({
     <Box sx={{ display: 'flex', height: '100%' }}>
       <CssBaseline />
       <AppBar position="fixed">
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h6" noWrap component="div">
             Clipped drawer
           </Typography>
+          <Link href={'/signout'}>
+            <Button color="inherit" startIcon={<LogoutIcon />}>
+              Sign Out
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer

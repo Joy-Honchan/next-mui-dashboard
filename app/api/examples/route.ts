@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { DataType } from 'types/example'
 
-interface DataType {
-    id: string
-    children?: DataType[]
-}
 
 const DATA: DataType = {
     id: 'Server A',

@@ -7,7 +7,7 @@ export const config = {
 
 export function middleware(request: NextRequest) {
     // Call our authentication function to check the request
-    if (!request.headers.has('Authorization')) {
+    if (request.nextUrl.pathname !== `/api/auth` && !request.headers.has('Authorization')) {
         // Respond with JSON indicating an error message
         return new NextResponse(
             JSON.stringify({ success: false, message: 'authentication failed' }),

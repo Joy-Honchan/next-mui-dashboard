@@ -8,7 +8,7 @@ const SignOut = () => {
 
   useEffect(() => {
     localStorage.removeItem('token')
-    axios.defaults.headers.common['Authorization'] = undefined
+    axios.defaults.headers.common.Authorization = undefined
 
     router.replace('/login')
   })

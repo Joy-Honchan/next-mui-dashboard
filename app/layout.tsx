@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import ThemeProvider from 'provider/ThemeProvider'
 import SwrProvider from 'provider/SwrProvider'
-import TemplateWithNavbar from 'components/Navbar'
+import { AuthProvider } from 'provider/AuthProvider'
 
 import 'config/axios'
 
@@ -26,8 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <SwrProvider>
-            {children}
-            {/* <TemplateWithNavbar>{children}</TemplateWithNavbar> */}
+            <AuthProvider>{children}</AuthProvider>
           </SwrProvider>
         </ThemeProvider>
       </body>

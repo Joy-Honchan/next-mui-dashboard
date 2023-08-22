@@ -1,11 +1,13 @@
 'use client'
 import { Box, TextField, Button } from '@mui/material'
-import { useState, ChangeEventHandler } from 'react'
+import { useState, ChangeEventHandler, useContext } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { AuthContext } from 'provider/AuthProvider'
 
 const Inputs = () => {
   const router = useRouter()
+  const { handleToken } = useContext(AuthContext)
   const [userName, setuserName] = useState('')
   const [password, setpassword] = useState('')
   const [userError, setUserError] = useState('')
@@ -21,8 +23,9 @@ const Inputs = () => {
       setUserError(res.data.userName)
       setPasswordError(res.data.password)
     } else if (res.data.msg === 'Login Success') {
+      handleToken(res.data.token)
       localStorage.setItem('token', res.data.token)
-      axios.defaults.headers.common['Authorization'] = `${res.data.token}`
+      axios.defaults.headers.common.Authorization = `${res.data.token}`
       router.push('/')
     }
   }

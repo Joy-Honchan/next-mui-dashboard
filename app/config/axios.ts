@@ -3,7 +3,7 @@ import axios from "axios"
 import { redirect } from 'next/navigation'
 
 if (localStorage.getItem('token')) {
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
+    axios.defaults.headers.common.Authorization = localStorage.getItem('token')
 }
 
 axios.interceptors.response.use(
