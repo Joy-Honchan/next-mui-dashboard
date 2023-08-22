@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { DataType } from 'types/example'
 
 
@@ -35,7 +34,7 @@ const DATA: DataType = {
     }]
 }
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: Request) {
     return NextResponse.json(DATA)
 }
 

@@ -1,5 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { TodoType } from "types/todo";
 
 const todos: TodoType[] = [
@@ -12,7 +11,7 @@ export async function GET(req: Request) {
     return NextResponse.json(todos)
 }
 
-export async function POST(req: NextRequest, res: NextApiResponse) {
+export async function POST(req: Request, res: Response) {
     const inputData: { title: string } = await req.json()
     if (!inputData.title) {
         return NextResponse.json({ error: "Title is required" });
