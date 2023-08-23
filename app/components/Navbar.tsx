@@ -55,10 +55,7 @@ export default function ClippedDrawer({
           <List>
             {['Home', 'Posts', 'Charts', 'Todo'].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ a: { width: '100%' } }}>
-                <Link
-                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}/`}
-                  prefetch={false}
-                >
+                <Link href={text === 'Home' ? '/' : `/${text.toLowerCase()}/`}>
                   <ListItemButton>
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
