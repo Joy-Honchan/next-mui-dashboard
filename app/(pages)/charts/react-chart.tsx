@@ -29,7 +29,6 @@ export default function ReactECharts({
     }
 
     // Add chart resize listener
-    // ResizeObserver is leading to a bit janky UX
     function resizeChart() {
       chart?.resize()
     }

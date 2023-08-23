@@ -53,26 +53,18 @@ export default function ClippedDrawer({
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['Home', 'Posts', 'Todo', 'Charts', 'PlainChart'].map(
-              (text, index) => (
-                <ListItem
-                  key={text}
-                  disablePadding
-                  sx={{ a: { width: '100%' } }}
-                >
-                  <Link
-                    href={text === 'Home' ? '/' : `/${deCapitalize(text)}/`}
-                  >
-                    <ListItemButton>
-                      <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                      </ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              )
-            )}
+            {['Home', 'Posts', 'Todo', 'Charts'].map((text, index) => (
+              <ListItem key={text} disablePadding sx={{ a: { width: '100%' } }}>
+                <Link href={text === 'Home' ? '/' : `/${deCapitalize(text)}/`}>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
           </List>
         </Box>
       </Drawer>
