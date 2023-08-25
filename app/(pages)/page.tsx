@@ -19,9 +19,31 @@ export default function Home() {
       <Grid item xs={12} md={4} sx={{ height: '50%' }}>
         <Paper
           sx={{
-            height: '100%'
+            height: '100%',
+            button: {
+              width: '100px',
+              backgroundColor: 'pink',
+              padding: '5px',
+              span: { position: 'relative', transition: 'all 0.5s' },
+              '&:hover': {
+                span: {
+                  paddingRight: '15px',
+                  transition: 'all 0.5s'
+                },
+                'span::after': {
+                  content: '"\u00BB"',
+                  position: 'absolute',
+                  right: 0,
+                  transition: 'all 0.5s'
+                }
+              }
+            }
           }}
-        ></Paper>
+        >
+          <button>
+            <span>Go</span>
+          </button>
+        </Paper>
       </Grid>
       <Grid item xs={12} md={8} sx={{ height: '50%' }}>
         <Paper sx={{ height: '100%' }}>
