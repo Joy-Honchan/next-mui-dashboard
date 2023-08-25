@@ -1,9 +1,9 @@
-import ReactChart from './react-chart'
-import PieOption from './pie-option'
+import ReactChart from 'components/chart/react-chart'
+import PieOption from 'components/chart/pie-option'
 import { useMemo } from 'react'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
-import { BarLineChart } from './charts'
+import { BarLineChart } from 'components/chart/charts'
 
 const Charts = () => {
   const pieOption = useMemo(() => PieOption(), [])

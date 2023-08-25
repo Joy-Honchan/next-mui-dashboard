@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import useSWR from 'swr'
 import Grahpin, { Behaviors } from '@antv/graphin'
 import { DataType } from 'types/example'
+import { Box } from '@mui/material'
 
 interface NodeType {
   id: string
@@ -59,7 +60,7 @@ const CompactBox = () => {
   const { data } = state
 
   return (
-    <div>
+    <Box sx={{ width: '100%', height: '100%', overflow: 'hidden' }}>
       {data && (
         <Grahpin
           data={data}
@@ -87,7 +88,7 @@ const CompactBox = () => {
           <TreeCollapse trigger="click" />
         </Grahpin>
       )}
-    </div>
+    </Box>
   )
 }
 
